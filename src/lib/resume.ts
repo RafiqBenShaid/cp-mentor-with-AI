@@ -68,8 +68,8 @@ export function buildResumeHtml(data: ResumeData): string {
   .badge { display: inline-block; background: #eef2ff; color: #4338ca; border-radius: 99px; padding: 5px 12px; font-size: 12px; margin: 0 6px 6px 0; }
   .tag { display: inline-block; background: #f1f5f9; border-radius: 8px; padding: 5px 10px; font-size: 12px; margin: 0 6px 6px 0; }
   .two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .prediction { background: linear-gradient(135deg, #eef2ff, #ecfeff); border-radius: 12px; padding: 16px; font-size: 14px; }
-  .prediction b { font-size: 22px; color: #4338ca; }
+  .prediction { background: linear-gradient(135deg, #f1f5f9, #f0fdfa); border-radius: 12px; padding: 16px; font-size: 14px; }
+  .prediction b { font-size: 22px; color: #0f766e; }
   .footer { margin-top: 28px; font-size: 11px; color: #94a3b8; text-align: center; }
   @media print { body { background: #fff; padding: 0; } .sheet { box-shadow: none; border-radius: 0; } }
 </style>

@@ -79,7 +79,7 @@ export default function Progress() {
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <div className="rounded-xl border border-orange-200 bg-gradient-to-br from-orange-50 to-white p-5 dark:border-orange-900 dark:from-orange-950/40 dark:to-slate-900">
+        <div className="rounded-xl border border-teal-200 bg-gradient-to-br from-teal-50 to-white p-5 dark:border-teal-900 dark:from-teal-950/30 dark:to-slate-900">
           <div className="text-sm text-slate-500 dark:text-slate-400">Current streak</div>
           <div className="mt-1 text-4xl font-bold">🔥 {streak.current_streak}</div>
           <div className="mt-1 text-xs text-slate-500">best {streak.longest_streak} days</div>

@@ -130,42 +130,42 @@ const features: {
     title: 'Performance analytics',
     desc: 'Rating trends, a projected next-contest rating and consistency scores from your real submissions.',
     path: '/analytics',
-    accent: 'from-indigo-500 to-blue-500',
+    accent: 'from-slate-600 to-teal-700',
   },
   {
     icon: 'brain',
     title: 'AI mentor',
     desc: 'Ask for a plan, a hint or an explanation. Every answer adapts to your weakest topics.',
     path: '/mentor',
-    accent: 'from-violet-500 to-fuchsia-500',
+    accent: 'from-slate-700 to-teal-700',
   },
   {
     icon: 'graph',
     title: 'Skill graph',
     desc: 'See how topics connect and which prerequisites are quietly holding your rating back.',
     path: '/skill-graph',
-    accent: 'from-sky-500 to-cyan-500',
+    accent: 'from-slate-600 to-teal-600',
   },
   {
     icon: 'target',
     title: 'Goals & revision',
     desc: 'Small daily targets plus spaced repetition, so the problems you learn actually stay learned.',
     path: '/goals',
-    accent: 'from-emerald-500 to-teal-500',
+    accent: 'from-teal-700 to-slate-700',
   },
   {
     icon: 'trophy',
     title: 'Contests & mock rounds',
     desc: 'Live reminders and timed mock contests with automatic revision for the problems you miss.',
     path: '/mock-contest',
-    accent: 'from-amber-500 to-orange-500',
+    accent: 'from-slate-700 to-teal-600',
   },
   {
     icon: 'file',
     title: 'Resume & community',
     desc: 'Export a competitive programming resume and compare your progress with peers.',
     path: '/resume',
-    accent: 'from-rose-500 to-pink-500',
+    accent: 'from-teal-600 to-slate-700',
   },
 ]
 
@@ -287,7 +287,7 @@ export default function Home() {
             className="flex items-center gap-2.5 text-left"
             aria-label="CP Mentor Hub home"
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-lg shadow-indigo-500/25">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-slate-700 to-teal-700 text-white shadow-md shadow-slate-900/15">
               <Icon name="trophy" className="h-5 w-5" />
             </span>
             <span>
@@ -320,13 +320,13 @@ export default function Home() {
               <Icon name={darkMode ? 'moon' : 'sun'} className="h-4 w-4" />
             </button>
             <button
-              onClick={() => navigate(sessionUserId ? '/' : '/login')}
+              onClick={() => navigate(sessionUserId ? '/dashboard' : '/login')}
               className="hidden rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:block"
             >
               {sessionUserId ? 'Dashboard' : 'Log in'}
             </button>
             <button
-              onClick={() => navigate(sessionUserId ? '/' : '/login?mode=register')}
+              onClick={() => navigate(sessionUserId ? '/dashboard' : '/login?mode=register')}
               className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-600/20 transition-colors hover:bg-indigo-700"
             >
               {sessionUserId ? 'Open dashboard' : 'Get started'}
@@ -336,9 +336,16 @@ export default function Home() {
       </header>
 
       <main id="top">
-        <section id="demo" className="relative scroll-mt-20 overflow-hidden">
-          <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-indigo-200/50 blur-3xl dark:bg-indigo-900/20" />
-          <div className="pointer-events-none absolute -right-24 top-32 h-80 w-80 rounded-full bg-violet-200/50 blur-3xl dark:bg-violet-900/20" />
+        <section id="demo" className="relative isolate scroll-mt-20 overflow-hidden">
+          <img
+            src={new URL('../data/home-hero.svg', import.meta.url).href}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-20 dark:opacity-35"
+          />
+          <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-slate-50 via-slate-50/90 to-slate-50/45 dark:from-slate-950 dark:via-slate-950/85 dark:to-slate-950/45" />
+          <div className="pointer-events-none absolute -left-24 top-10 -z-10 h-72 w-72 rounded-full bg-slate-200/40 blur-3xl dark:bg-slate-800/20" />
+          <div className="pointer-events-none absolute -right-24 top-32 -z-10 h-80 w-80 rounded-full bg-teal-200/35 blur-3xl dark:bg-teal-900/15" />
 
           <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24">
             <div className="animate-fade-up">
@@ -352,7 +359,7 @@ export default function Home() {
 
               <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
                 Competitive programming,{' '}
-                <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent dark:from-indigo-400 dark:to-violet-300">
+                <span className="bg-gradient-to-r from-slate-700 to-teal-700 bg-clip-text text-transparent dark:from-slate-300 dark:to-teal-300">
                   with a plan.
                 </span>
               </h1>
@@ -364,7 +371,7 @@ export default function Home() {
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <button
-                  onClick={() => navigate(sessionUserId ? '/' : '/login?mode=register')}
+                  onClick={() => navigate(sessionUserId ? '/dashboard' : '/login?mode=register')}
                   className="rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-xl shadow-indigo-600/25 transition-transform hover:-translate-y-0.5 hover:bg-indigo-700"
                 >
                   {sessionUserId ? 'Open your dashboard' : 'Start learning free'}
@@ -641,20 +648,20 @@ export default function Home() {
         </section>
 
         <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-600 px-6 py-14 text-center shadow-2xl shadow-indigo-500/25 sm:px-12">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-800 via-slate-700 to-teal-800 px-6 py-14 text-center shadow-xl shadow-slate-900/15 sm:px-12">
             <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-2xl" />
             <div className="pointer-events-none absolute -bottom-20 -right-10 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
             <div className="relative">
               <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
                 Your next rating jump starts today
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-indigo-100">
+              <p className="mx-auto mt-4 max-w-xl text-slate-200">
                 Set a daily goal, follow your plan, and let the mentor handle the analysis.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <button
-                  onClick={() => navigate(sessionUserId ? '/' : '/login?mode=register')}
-                  className="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-indigo-700 shadow-lg transition-transform hover:-translate-y-0.5"
+                  onClick={() => navigate(sessionUserId ? '/dashboard' : '/login?mode=register')}
+                  className="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-teal-800 shadow-lg transition-transform hover:-translate-y-0.5"
                 >
                   {sessionUserId ? 'Open dashboard' : 'Create free account'}
                 </button>
@@ -673,7 +680,7 @@ export default function Home() {
       <footer className="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
           <div className="flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 text-white">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-slate-700 to-teal-700 text-white">
               <Icon name="trophy" className="h-4 w-4" />
             </span>
             <div>
@@ -692,7 +699,7 @@ export default function Home() {
               </button>
             ))}
             <button
-              onClick={() => navigate(sessionUserId ? '/' : '/login')}
+              onClick={() => navigate(sessionUserId ? '/dashboard' : '/login')}
               className="transition-colors hover:text-indigo-600 dark:hover:text-indigo-400"
             >
               {sessionUserId ? 'Dashboard' : 'Log in'}

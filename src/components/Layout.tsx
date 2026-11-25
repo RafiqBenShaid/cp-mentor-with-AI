@@ -3,8 +3,9 @@ import { NavLink, Outlet } from 'react-router-dom'
 import { useStore } from '../store/useStore'
 
 const navItems = [
-  { to: '/', label: 'Dashboard', icon: '📊', end: true, section: 'Overview' },
-  { to: '/home', label: 'Homepage', icon: '🏠', end: true, section: 'Overview' },
+  // { to: '/', label: 'Homepage', icon: '🏠', end: true, section: 'Overview' },
+  { to: '/', label: 'Homepage', icon: '🏠', end: true, section: 'Overview' },
+  { to: '/dashboard', label: 'Dashboard', icon: '📊', end: true, section: 'Overview' },
   { to: '/analytics', label: 'Analytics', icon: '📈', end: false, section: 'Overview' },
   { to: '/skill-graph', label: 'Skill Graph', icon: '🕸️', end: false, section: 'Overview' },
   { to: '/mentor', label: 'AI Mentor', icon: '🧠', end: false, section: 'Overview' },
@@ -82,10 +83,14 @@ export default function Layout() {
           <div className="flex items-center gap-3">
             <NavLink
               to="/profile"
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-indigo-500 text-sm font-semibold text-white"
+              // className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-indigo-500 text-sm font-semibold text-white"
               title="Open profile"
             >
-              {profile.name.charAt(0)}
+              <img
+              src={new URL('../data/profile_pic.png', import.meta.url).href}
+              alt={`${profile.name}'s profile`}
+              className="h-16 w-16 shrink-0 rounded-full object-cover"
+            />
             </NavLink>
             <div className="min-w-0 flex-1">
               <div className="truncate text-sm font-medium">{profile.name}</div>

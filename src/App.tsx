@@ -43,8 +43,9 @@ export default function App() {
     <HashRouter>
       <Routes>
         <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route element={<Layout />}>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/skill-graph" element={<SkillGraph />} />
           <Route path="/goals" element={<Goals />} />

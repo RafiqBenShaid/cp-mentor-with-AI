@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useStore } from '../store/useStore'
-import { API_BASE, AI_BASE, checkAiHealth, checkApiHealth, type ServiceHealth } from '../lib/api'
 import type { Platform, UserProfile } from '../types'
 
 const platforms: { key: Platform; label: string; handleField: keyof UserProfile; url: (handle: string) => string; color: string }[] = [
@@ -27,12 +26,6 @@ const platforms: { key: Platform; label: string; handleField: keyof UserProfile;
   },
 ]
 
-function statusStyle(state: ServiceHealth['state']): string {
-  if (state === 'online') return 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300'
-  if (state === 'offline') return 'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400'
-  return 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300'
-}
-
 export default function Profile() {
   const profile = useStore((s) => s.profile)
   const updateProfile = useStore((s) => s.updateProfile)
@@ -51,19 +44,6 @@ export default function Profile() {
 
   const [form, setForm] = useState(profile)
   const [saved, setSaved] = useState(false)
-  const [api, setApi] = useState<ServiceHealth>({ state: 'checking', detail: 'checking…' })
-  const [ai, setAi] = useState<ServiceHealth>({ state: 'checking', detail: 'checking…' })
-
-  const refreshServices = () => {
-    setApi({ state: 'checking', detail: 'checking…' })
-    setAi({ state: 'checking', detail: 'checking…' })
-    void checkApiHealth().then(setApi)
-    void checkAiHealth().then(setAi)
-  }
-
-  useEffect(() => {
-    refreshServices()
-  }, [])
 
   useEffect(() => {
     setForm(profile)
@@ -109,9 +89,11 @@ export default function Profile() {
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-3">
         <div className="rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
           <div className="flex items-center gap-4">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-indigo-500 text-2xl font-bold text-white">
-              {profile.name.charAt(0)}
-            </div>
+            <img
+              src={new URL('../data/profile_pic.png', import.meta.url).href}
+              alt={`${profile.name}'s profile`}
+              className="h-16 w-16 shrink-0 rounded-full object-cover"
+            />
             <div className="min-w-0">
               <div className="truncate text-lg font-bold">{profile.name}</div>
               <div className="text-sm text-slate-500 dark:text-slate-400">
@@ -259,7 +241,7 @@ export default function Profile() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+        {/* <div className="rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
           <div className="flex items-center justify-between">
             <h2 className="font-semibold">Local services</h2>
             <button
@@ -297,7 +279,7 @@ export default function Profile() {
             <code className="block">cd python-engine && uvicorn app:app --port 8000</code>
             <p className="mt-1">Override URLs with VITE_API_URL and VITE_AI_URL.</p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )
